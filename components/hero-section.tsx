@@ -53,13 +53,12 @@ export default function HeroSection() {
           <div className="relative">
             <div className="relative w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden">
               <Image
-                src="/images/hero-parking.png"
+                src="/images/parking-map.png"
                 alt="Parking lot aerial view"
                 fill
                 className="object-cover"
                 priority
               />
-              {/* Large EP Logo Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-8xl lg:text-9xl font-bold opacity-80 select-none">EP</div>
               </div>
