@@ -7,15 +7,12 @@ export default function FeaturesSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-12">
-            {/* Feature 1 */}
             <div className="space-y-4">
               <h2 className="text-3xl lg:text-4xl font-bold text-black">БИДНИЙ ЗОРИЛГО</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 Нийтийн ээмшийн 50 байршил дахь төлбөртэй зогсоолын менежментийг сайжруулах
               </p>
             </div>
-
-            {/* Feature 2 */}
             <div className="space-y-4">
               <h3 className="text-2xl lg:text-3xl font-bold text-black">БИДНИЙ ҮНЭТ ЗҮЙЛ</h3>
               <p className="text-gray-600 text-lg leading-relaxed">
@@ -24,27 +21,19 @@ export default function FeaturesSection() {
                 нийцсэн үйлчилгээ санал болгож ажиллана.
               </p>
             </div>
-
-            {/* Feature 3 */}
             <div className="space-y-4">
-              <h3 className="text-2xl lg:text-3xl font-bold text-black">БИДНИЙ URIA</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-black">Бидний Уриа</h3>
               <p className="text-gray-600 text-lg leading-relaxed">Хэзээч ийм амар байсангүй</p>
             </div>
           </div>
-
-          {/* Right Illustration */}
           <div className="relative">
             <div className="relative w-full h-96 lg:h-[600px]">
               <Image
-                src="/images/features-illustration.png"
+                src="/images/Parking-spot.png"
                 alt="3D parking illustration"
                 fill
                 className="object-contain"
               />
-              {/* Floating PARKING text */}
-              <div className="absolute top-8 right-8 text-green-400 text-2xl font-bold transform rotate-12 opacity-80">
-                PARKING
-              </div>
             </div>
           </div>
         </div>
