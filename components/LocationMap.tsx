@@ -1,12 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+/// <reference types="@types/google.maps" />
 
-declare global {
-  interface Window {
-    google: typeof google;
-  }
-  var google: any;
-}
+import { useEffect, useRef, useState } from "react";
 
 type ParkingSpot = {
   lat: number;
@@ -14,7 +9,7 @@ type ParkingSpot = {
   name: string;
   totalSpots: number;
   availableSpots: number;
-  hourlyRate: number; // төгрөгөөр
+  hourlyRate: number;
 };
 
 const PARKING_SPOTS: ParkingSpot[] = [
@@ -48,26 +43,28 @@ export default function LocationMap() {
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const directionsRendererRef = useRef<any>(null);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const infoWindowRef = useRef<any>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!mapLoaded && typeof window !== "undefined") {
-      const initMap = () => {
+    if (!mapLoaded && typeof window !== "undefined" && window.google) {
+      const mapInit = () => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            const { latitude, longitude } = position.coords;
-            const userLocation = { lat: latitude, lng: longitude };
+            const userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
 
             const map = new google.maps.Map(mapRef.current as HTMLElement, {
               center: userLocation,
               zoom: 14,
               streetViewControl: false,
             });
+
             const trafficLayer = new google.maps.TrafficLayer();
             trafficLayer.setMap(map);
 
-            // Хэрэглэгчийн байршил
             new google.maps.Marker({
               position: userLocation,
               map,
@@ -81,6 +78,7 @@ export default function LocationMap() {
             directionsRendererRef.current =
               new google.maps.DirectionsRenderer();
             directionsRendererRef.current.setMap(map);
+
             infoWindowRef.current = new google.maps.InfoWindow();
 
             PARKING_SPOTS.forEach((spot, index) => {
@@ -94,19 +92,19 @@ export default function LocationMap() {
               });
 
               marker.addListener("click", () => {
-                // InfoWindow доторх HTML контент
                 const content = `
                   <div style="font-family: sans-serif">
                     <h3 style="margin-bottom: 8px; font-size: 16px;">${spot.name}</h3>
                     <p>🚗 Нийт зогсоол: <strong>${spot.totalSpots}</strong></p>
+                    <p>🅿️ Сул зогсоол: <strong>${spot.availableSpots}</strong></p>
                     <p>💸 Цагийн үнэ: <strong>${spot.hourlyRate}₮</strong></p>
                   </div>
                 `;
-                infoWindowRef.current!.setContent(content);
-                infoWindowRef.current!.open(map, marker);
+                infoWindowRef.current.setContent(content);
+                infoWindowRef.current.open(map, marker);
 
                 if (selectedIndex === index) {
-                  directionsRendererRef.current?.setDirections({ routes: [] });
+                  directionsRendererRef.current.setDirections({ routes: [] });
                   setSelectedIndex(null);
                 } else {
                   directionsService.route(
@@ -115,23 +113,19 @@ export default function LocationMap() {
                       destination: { lat: spot.lat, lng: spot.lng },
                       travelMode: google.maps.TravelMode.DRIVING,
                       drivingOptions: {
-                        departureTime: new Date(), // Одоогийн цаг — real-time traffic
-                        trafficModel: google.maps.TrafficModel.BEST_GUESS, // эсвэл PESSIMISTIC | OPTIMISTIC
+                        departureTime: new Date(),
+                        trafficModel: google.maps.TrafficModel.BEST_GUESS,
                       },
                     },
                     (result: any, status: any) => {
-                      if (status === google.maps.DirectionsStatus.OK) {
-                        directionsRendererRef.current?.setDirections(result);
-
-                        // ⏱ ETA-г авч болно:
-                        const leg = result.routes[0].legs[0];
-                        const etaText =
-                          leg.duration_in_traffic?.text || leg.duration.text;
-                        console.log("Очих хугацаа (түгжрэлтэй):", etaText);
-
+                      if (status === "OK") {
+                        directionsRendererRef.current.setDirections(result);
+                        const eta =
+                          result.routes[0].legs[0].duration_in_traffic?.text;
+                        console.log("ETA:", eta);
                         setSelectedIndex(index);
                       } else {
-                        alert("Чиглэл олдсонгүй: " + status);
+                        alert("Маршрут олдсонгүй: " + status);
                       }
                     }
                   );
@@ -145,11 +139,7 @@ export default function LocationMap() {
         );
       };
 
-      const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
-      script.async = true;
-      script.onload = initMap;
-      document.head.appendChild(script);
+      mapInit();
     }
   }, [mapLoaded, selectedIndex]);
 
