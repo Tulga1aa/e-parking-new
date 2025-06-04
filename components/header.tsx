@@ -13,23 +13,37 @@ const Header = () => {
               </div>
               <div>
                 <div className="text-green-500 font-bold text-xl">EASY</div>
-                <div className="text-gray-700 font-bold text-xl -mt-1">PARKING</div>
+                <div className="text-gray-700 font-bold text-xl -mt-1">
+                  PARKING
+                </div>
               </div>
             </div>
           </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="#hero" className="text-gray-700 hover:text-green-500 font-medium">
+            <Link
+              href="#"
+              className="text-gray-700 hover:text-green-500 font-medium"
+            >
               НҮҮР
             </Link>
-            <Link href="#about" className="text-gray-700 hover:text-green-500 font-medium">
+            <Link
+              href="#"
+              className="text-gray-700 hover:text-green-500 font-medium"
+            >
               БИДНИЙ ТУХАЙ
             </Link>
-            <Link href="#locations" className="text-gray-700 hover:text-green-500 font-medium">
+            <Link
+              href="#"
+              className="text-gray-700 hover:text-green-500 font-medium"
+            >
               БАЙРШИЛУУД
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-green-500 font-medium">
+            <Link
+              href="./contact"
+              className="text-gray-700 hover:text-green-500 font-medium"
+            >
               ХОЛБОО БАРИХ
             </Link>
           </nav>
