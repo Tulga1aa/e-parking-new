@@ -10,7 +10,7 @@ export default function HomePage() {
       <div className="shadow-lg fixed top-0 left-0 right-0 z-50 bg-white">
         <Header />
       </div>
-      <div className="pt-10"></div> {/* Space for fixed header */}
+      <div className="pt-10"></div>
       <HeroSection />
       <FeaturesSection />
       <LocationSection />
