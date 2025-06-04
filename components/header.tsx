@@ -29,7 +29,7 @@ const Header = () => {
             <Link href="#" className="text-gray-700 hover:text-green-500 font-medium">
               БАЙРШИЛУУД
             </Link>
-            <Link href="#" className="text-gray-700 hover:text-green-500 font-medium">
+            <Link href="./contact" className="text-gray-700 hover:text-green-500 font-medium">
               ХОЛБОО БАРИХ
             </Link>
           </nav>
