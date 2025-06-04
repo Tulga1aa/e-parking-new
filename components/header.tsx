@@ -23,19 +23,19 @@ const Header = () => {
 
           <nav className="hidden md:flex space-x-8">
             <Link
-              href="#"
+              href="#hero"
               className="text-gray-700 hover:text-green-500 font-medium"
             >
               НҮҮР
             </Link>
             <Link
-              href="#"
+              href="#about"
               className="text-gray-700 hover:text-green-500 font-medium"
             >
               БИДНИЙ ТУХАЙ
             </Link>
             <Link
-              href="#"
+              href="#locations"
               className="text-gray-700 hover:text-green-500 font-medium"
             >
               БАЙРШИЛУУД
