@@ -3,7 +3,7 @@ import LocationMap from "./LocationMap";
 
 export default function LocationSection() {
   return (
-    <section className="py-16 lg:py-24 bg-gray-50">
+    <section id="locations" className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
           {/* Section Header */}
