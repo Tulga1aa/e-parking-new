@@ -3,7 +3,7 @@ import Footer from "@/components/footer"
 import HeroSection from "@/components/hero-section"
 import FeaturesSection from "@/components/features-section"
 import LocationSection from "@/components/location-section"
-import ContactSection from "@/components/contact"
+
 
 
 export default function HomePage() {
@@ -13,7 +13,6 @@ export default function HomePage() {
       <HeroSection />
       <FeaturesSection />
       <LocationSection />
-      <ContactSection />
       <Footer />
     </main>
   )
