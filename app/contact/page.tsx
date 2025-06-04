@@ -13,10 +13,7 @@ import Link from "next/link";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
-    phone: "",
-    subject: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,10 +43,7 @@ const ContactSection = () => {
 
     // Reset form
     setFormData({
-      name: "",
       email: "",
-      phone: "",
-      subject: "",
       message: "",
     });
     setIsSubmitting(false);
