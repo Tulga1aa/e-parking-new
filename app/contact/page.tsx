@@ -50,28 +50,31 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 dark:bg-gray-800 ">
       <Link
         href="/"
-        className="absolute top-4 left-4 text-gray-600 hover:text-green-600 transition-colors"
+        className="absolute top-4 left-4 text-gray-600 hover:text-green-600 transition-colors "
       >
-        <IoIosArrowBack className="mx-auto w-7 h-7" />
+        <span className="flex justify-center items-center space-x-2 dark:text-white dark:hover:text-green-600">
+          <IoIosArrowBack className="mx-auto w-7 h-7" />
+          Буцах
+        </span>
       </Link>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-2xl lg:text-3xl font-bold text-black mb-4">
+          <h2 className="text-2xl lg:text-3xl font-bold text-black mb-4 dark:text-white">
             ХОЛБОО БАРИХ
           </h2>
-          <p className="text-gray-600 text-md max-w-2xl mx-auto">
+          <p className="text-gray-600 text-md max-w-2xl mx-auto dark:text-gray-200">
             Асуулт, санал хүсэлт байвал бидэнтэй холбогдоорой. Бид танд хурдан
             хариулт өгөхийг хичээх болно.
           </p>
         </div>
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-8 ">
             <div>
-              <h3 className="text-2xl font-bold text-black mb-6">
+              <h3 className="text-2xl font-bold text-black mb-6 dark:text-white">
                 Холбоо барих мэдээлэл
               </h3>
               <div className="space-y-6">
@@ -80,9 +83,15 @@ const ContactSection = () => {
                     <Phone className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Утас</h4>
-                    <p className="text-gray-600">+976 7777-7777</p>
-                    <p className="text-gray-600">+976 8888-8888</p>
+                    <h4 className="font-semibold text-gray-900 mb-1 dark:text-white">
+                      Утас
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-200">
+                      +976 7777-7777
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-200">
+                      +976 8888-8888
+                    </p>
                   </div>
                 </div>
 
@@ -91,9 +100,15 @@ const ContactSection = () => {
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">И-мэйл</h4>
-                    <p className="text-gray-600">info@easyparking.mn</p>
-                    <p className="text-gray-600">support@easyparking.mn</p>
+                    <h4 className="font-semibold text-gray-900 mb-1 dark:text-white">
+                      И-мэйл
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-200">
+                      info@easyparking.mn
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-200">
+                      support@easyparking.mn
+                    </p>
                   </div>
                 </div>
 
@@ -102,11 +117,13 @@ const ContactSection = () => {
                     <MapPin className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Хаяг</h4>
-                    <p className="text-gray-600">
+                    <h4 className="font-semibold text-gray-900 mb-1 dark:text-white">
+                      Хаяг
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-200">
                       Улаанбаатар хот, Сүхбаатар дүүрэг
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-200">
                       Чингисийн өргөн чөлөө 15, 210648
                     </p>
                   </div>

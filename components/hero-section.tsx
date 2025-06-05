@@ -10,13 +10,13 @@ export default function HeroSection() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold">
-                <span className="text-green-500">EASY</span>{" "}
-                <span className="text-black">PARKING</span>
+                <span className="text-green-500">EASY</span>
+                <span className="text-black dark:text-white">PARKING</span>
               </h1>
-              <h2 className="text-3xl lg:text-5xl font-bold text-black">
+              <h2 className="text-3xl lg:text-5xl font-bold text-black dark:text-white">
                 АВТО ЗОГСООЛ
               </h2>
-              <p className="text-xl lg:text-2xl text-gray-600 font-medium">
+              <p className="text-xl lg:text-2xl text-gray-600 font-medium dark:text-gray-200">
                 ХЭЗЭЭЧ ИЙМ АМАР БАЙСАНГҮЙ
               </p>
             </div>
@@ -59,11 +59,6 @@ export default function HeroSection() {
                 className="object-cover rounded-2xl"
                 priority
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white text-8xl lg:text-9xl font-bold opacity-80 select-none">
-                  EP
-                </div>
-              </div>
             </div>
           </div>
         </div>
