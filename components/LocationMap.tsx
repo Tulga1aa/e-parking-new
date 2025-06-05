@@ -48,7 +48,15 @@ export default function LocationMap() {
 
   useEffect(() => {
     if (!mapLoaded && typeof window !== "undefined" && window.google) {
-      const mapInit = () => {
+      const mapInit = async () => {
+        const { Map } = (await window.google.maps.importLibrary(
+          "maps"
+        )) as google.maps.MapsLibrary;
+        const { AdvancedMarkerElement } =
+          (await window.google.maps.importLibrary(
+            "marker"
+          )) as google.maps.MarkerLibrary;
+
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const userLocation = {
@@ -56,22 +64,25 @@ export default function LocationMap() {
               lng: position.coords.longitude,
             };
 
-            const map = new google.maps.Map(mapRef.current as HTMLElement, {
+            const map = new Map(mapRef.current as HTMLElement, {
               center: userLocation,
               zoom: 14,
               streetViewControl: false,
+              mapId: process.env.NEXT_PUBLIC_GOOGLE_MAP_ID,
             });
 
-            const trafficLayer = new google.maps.TrafficLayer();
-            trafficLayer.setMap(map);
-
-            new google.maps.Marker({
+            new AdvancedMarkerElement({
               position: userLocation,
               map,
               title: "Таны байршил",
-              icon: {
-                url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
-              },
+              content: (() => {
+                const img = document.createElement("img");
+                img.src =
+                  "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+                img.style.width = "32px";
+                img.style.height = "32px";
+                return img;
+              })(),
             });
 
             const directionsService = new google.maps.DirectionsService();
@@ -82,24 +93,29 @@ export default function LocationMap() {
             infoWindowRef.current = new google.maps.InfoWindow();
 
             PARKING_SPOTS.forEach((spot, index) => {
-              const marker = new google.maps.Marker({
+              const marker = new AdvancedMarkerElement({
                 position: { lat: spot.lat, lng: spot.lng },
                 map,
                 title: spot.name,
-                icon: {
-                  url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-                },
+                content: (() => {
+                  const img = document.createElement("img");
+                  img.src =
+                    "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+                  img.style.width = "32px";
+                  img.style.height = "32px";
+                  return img;
+                })(),
               });
 
-              marker.addListener("click", () => {
+              marker.addEventListener("gmp-click", () => {
                 const content = `
-                  <div style="font-family: sans-serif">
-                    <h3 style="margin-bottom: 8px; font-size: 16px;">${spot.name}</h3>
-                    <p>🚗 Нийт зогсоол: <strong>${spot.totalSpots}</strong></p>
-                    <p>🅿️ Сул зогсоол: <strong>${spot.availableSpots}</strong></p>
-                    <p>💸 Цагийн үнэ: <strong>${spot.hourlyRate}₮</strong></p>
-                  </div>
-                `;
+                <div style="font-family: sans-serif">
+                  <h3 style="margin-bottom: 8px; font-size: 16px;">${spot.name}</h3>
+                  <p>🚗 Нийт зогсоол: <strong>${spot.totalSpots}</strong></p>
+                  <p>🅿️ Сул зогсоол: <strong>${spot.availableSpots}</strong></p>
+                  <p>💸 Цагийн үнэ: <strong>${spot.hourlyRate}₮</strong></p>
+                </div>
+              `;
                 infoWindowRef.current.setContent(content);
                 infoWindowRef.current.open(map, marker);
 
@@ -120,9 +136,6 @@ export default function LocationMap() {
                     (result: any, status: any) => {
                       if (status === "OK") {
                         directionsRendererRef.current.setDirections(result);
-                        const eta =
-                          result.routes[0].legs[0].duration_in_traffic?.text;
-                        console.log("ETA:", eta);
                         setSelectedIndex(index);
                       } else {
                         alert("Маршрут олдсонгүй: " + status);
