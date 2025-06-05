@@ -9,18 +9,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth dark">
-      <head>
+    <html lang="en" className="scroll-smooth">
+      <head />
+      <body>
+        {/* Google Maps Script */}
         <Script
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=marker`}
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=marker&map_ids=YOUR_MAP_ID`}
           strategy="beforeInteractive"
         />
-      </head>
-      <body>{children}</body>
+        {children}
+      </body>
     </html>
   );
 }
