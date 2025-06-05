@@ -1,4 +1,5 @@
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -8,31 +9,50 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-lg">EP</span>
+              <div className="w-8 h-8 bg-white rounded flex items-center justify-center p-1">
+                <Image
+                  src="/images/Logo.png"
+                  alt="Logo"
+                  width={48}
+                  height={48}
+                />
               </div>
               <div>
                 <div className="text-green-500 font-bold">EASY</div>
                 <div className="text-white font-bold -mt-1">PARKING</div>
               </div>
             </div>
-            <p className="text-gray-400 text-sm">Улаанбаатар хотын авто зогсоолын шилдэг шийдэл</p>
+            <p className="text-gray-400 text-sm">
+              Улаанбаатар хотын авто зогсоолын шилдэг шийдэл
+            </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Холбоосууд</h3>
             <div className="space-y-2">
-              <Link href="#" className="block text-gray-400 hover:text-white text-sm">
+              <Link
+                href="#"
+                className="block text-gray-400 hover:text-white text-sm"
+              >
                 Нүүр хуудас
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-white text-sm">
+              <Link
+                href="#"
+                className="block text-gray-400 hover:text-white text-sm"
+              >
                 Бидний тухай
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-white text-sm">
+              <Link
+                href="#"
+                className="block text-gray-400 hover:text-white text-sm"
+              >
                 Байршилууд
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-white text-sm">
+              <Link
+                href="#"
+                className="block text-gray-400 hover:text-white text-sm"
+              >
                 Холбоо барих
               </Link>
             </div>
@@ -69,9 +89,11 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">© 2024 Easy Parking. Бүх эрх хуулиар хамгаалагдсан.</p>
+          <p className="text-gray-400 text-sm">
+            © 2024 Easy Parking. Бүх эрх хуулиар хамгаалагдсан.
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

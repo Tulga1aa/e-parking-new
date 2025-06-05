@@ -3,6 +3,7 @@ import BurgerMenu from "@/public/svg/burgerMenu";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
+import Image from "next/image";
 
 const Header = () => {
   const [isDark, setIsDark] = useState(false);
@@ -31,8 +32,13 @@ const Header = () => {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-lg">EP</span>
+              <div className="w-12 h-12 dark:bg-white rounded flex items-center justify-center">
+                <Image
+                  src="/images/Logo.png"
+                  alt="Logo"
+                  width={48}
+                  height={48}
+                />
               </div>
               <div>
                 <div className="text-green-500 font-bold text-xl">EASY</div>
