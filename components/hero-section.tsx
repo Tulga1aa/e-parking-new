@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="bg-gray-50 py-16 lg:py-24">
+    <section id="hero" className="bg-gray-50 py-16 lg:py-24 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
@@ -24,9 +24,9 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-black  rounded-lg hover:bg-green-500 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-black dark:bg-gray-300 rounded-lg hover:bg-green-500 hover:text-white transition-colors"
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 w-44 h-12 text-black hover:text-white">
                   <PlayStore />
                   <div className="text-left">
                     <div className="text-xs">GET IT ON</div>
@@ -39,7 +39,7 @@ export default function HeroSection() {
                 href="#"
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-black bg-black  rounded-lg hover:bg-green-500 text-white  hover:text-black transition-colors"
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 w-44 h-12">
                   <Apple />
                   <div className="text-left">
                     <div className="text-xs">Download on the</div>

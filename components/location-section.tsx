@@ -3,7 +3,10 @@ import LocationMap from "./LocationMap";
 
 export default function LocationSection() {
   return (
-    <section id="locations" className="py-16 lg:py-24 bg-gray-50">
+    <section
+      id="locations"
+      className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-800"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
           <div className="flex items-center space-x-4">
@@ -19,15 +22,15 @@ export default function LocationSection() {
           <LocationMap />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div className="bg-white rounded-lg p-6 shadow-md text-center">
+            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md text-center">
               <div className="text-3xl font-bold text-green-500 mb-2">50+</div>
               <div className="text-gray-600">Байршил</div>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-md text-center">
+            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md text-center">
               <div className="text-3xl font-bold text-green-500 mb-2">24/7</div>
               <div className="text-gray-600">Үйлчилгээ</div>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-md text-center">
+            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md text-center">
               <div className="text-3xl font-bold text-green-500 mb-2">
                 1000+
               </div>

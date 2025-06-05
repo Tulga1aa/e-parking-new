@@ -157,7 +157,7 @@ export default function LocationMap() {
   }, [mapLoaded, selectedIndex]);
 
   return (
-    <div className="w-full h-[500px] rounded-2xl overflow-hidden shadow-lg">
+    <div className="w-full h-[500px] rounded-2xl overflow-hidden shadow-lg dark:bg-gray-800">
       <div ref={mapRef} className="w-full h-full" />
     </div>
   );
